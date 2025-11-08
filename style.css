@@ -1,0 +1,243 @@
+/* Modern theme for Plant Disease Detector */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #10b981;
+  --primary-dark: #059669;
+  --primary-light: #d1fae5;
+  --secondary: #6366f1;
+  --bg-gradient-start: #f0fdf4;
+  --bg-gradient-end: #ecfeff;
+  --card-shadow: 0 20px 40px rgba(0,0,0,0.03);
+  --card-bg: #ffffff;
+  --text-primary: #1e293b;
+  --text-muted: #64748b;
+  --border-light: rgba(15,23,42,0.06);
+}
+
+/* Base styles */
+body.bg-soft {
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* Navbar styling */
+.navbar {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.85) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.navbar .brand-mark { 
+  font-size: 1.75rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.navbar .brand-title {
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  /* Use deep green for brand text; keep gradient for modern browsers */
+  background: linear-gradient(90deg, #064e3b 0%, var(--secondary) 100%);
+  /* Prefer gradient clipped text in WebKit; provide a solid fallback for other browsers */
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #064e3b; /* deep green fallback color */
+  font-size: 1.05rem;
+}
+
+/* Card and content */
+.card {
+  border: none;
+  border-radius: 24px;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Upload area */
+.drop-area {
+  background: linear-gradient(135deg, 
+    rgba(16,185,129,0.05) 0%,
+    rgba(99,102,241,0.05) 100%);
+  border: 2px dashed rgba(16,185,129,0.2);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.drop-area::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(16,185,129,0.1) 0%,
+    rgba(99,102,241,0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.drop-area:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.drop-area.dragover {
+  border-color: var(--primary);
+  box-shadow: 0 10px 40px rgba(16,185,129,0.15);
+  transform: translateY(-3px);
+}
+
+.drop-area.dragover::before {
+  opacity: 1;
+}
+
+/* Buttons */
+.btn-upload {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  border: none;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-upload:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16,185,129,0.25);
+}
+
+.btn-success {
+  background: var(--primary);
+  border: none;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-success:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16,185,129,0.2);
+}
+
+/* Image preview */
+.preview-wrap {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.img-frame {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, 
+    rgba(16,185,129,0.03) 0%,
+    rgba(99,102,241,0.03) 100%);
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.img-frame:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.img-frame img {
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* Prediction result */
+.alert-light {
+  background: linear-gradient(135deg, 
+    rgba(16,185,129,0.05) 0%,
+    rgba(99,102,241,0.05) 100%);
+  border: none;
+  border-radius: 16px;
+}
+
+.border-start-4 {
+  border-left: 4px solid var(--primary) !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typography */
+.display-6 {
+  background: linear-gradient(90deg, var(--primary) 30%, var(--secondary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700 !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .img-frame {
+    min-height: 200px;
+  }
+  .card {
+    border-radius: 20px;
+  }
+}
+
+/* Loading overlay */
+#loadingOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2,6,23,0.45);
+  z-index: 1200;
+}
+
+#loadingOverlay .loading-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 28px;
+  border-radius: 12px;
+}
+
+/* Slight button micro-interactions */
+.btn-upload, .btn-success, .stButton>button {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.btn-upload:active, .btn-success:active { transform: translateY(1px); }
+.btn-upload:focus, .btn-success:focus { box-shadow: 0 6px 18px rgba(16,185,129,0.15); outline: none; }
+
+/* Make dashed empty result card slightly friendlier */
+.border-dashed {
+  border: 2px dashed rgba(15,23,42,0.06);
+  padding: 2.5rem;
+  border-radius: 12px;
+}
